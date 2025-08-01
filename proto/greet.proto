@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package greet;
+
+option go_package = "github.com/nmdra/gRPC-Hello-Server/pb";
+
+import "google/protobuf/empty.proto";
+
+service GreetService {
+    rpc SayHello (HelloRequest) returns (HelloResponse);
+    rpc WhoAmI (google.protobuf.Empty) returns (WhoAmIResponse);
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+}
+
+message WhoAmIResponse {
+    string remote_addr = 1;
+    string user_agent = 2;
+    string hostname = 3;
+}
